@@ -111,6 +111,8 @@ Finally, run the script
 
 Then you can access the OpenWebUI at `http://localhost:3000`
 
+![screenshot of OpenWebUI running](./docs/openwebui.jpeg)
+
 ## Contact
 
-Adriana Pinto luzadriana.pin@gmail.com
+Adriana Pinto https://www.linkedin.com/in/adrianapinto/
