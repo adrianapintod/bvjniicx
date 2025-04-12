@@ -28,6 +28,7 @@ This project provides tools and utilities for fine-tuning Llama-3.1 models using
 - uv
 - docker
 - Dependencies as listed in `pyproject.toml`
+- x86_64 architecture
 
 
 ## How to Install Locally for Development
@@ -90,14 +91,26 @@ See `.env.dist` for all available configuration options.
 
 ### How to run OpenWebUI uisng the fine-tuned model
 
+To run please first install the `huggingface-hub[cli]`
+
+```Python
+uv add "huggingface-hub[cli]"
 ```
-git clone git@github.com:adrianapintod/bvjniicx.git
-cd bvjniicx
-uv sync
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -e ".[dev]"    # Installs development dependencies
+
+Then give execution permissions to the file `scripts/launch.sh`
+
+```bash
+chmod +x scripts/launch.sh
 ```
+
+Finally, run the script
+
+```bash
+./scripts/launch.sh
+```
+
+Then you can access the OpenWebUI at `http://localhost:3000`
 
 ## Contact
 
-For questions or support, please file an issue on the GitHub repository.
+Adriana Pinto luzadriana.pin@gmail.com

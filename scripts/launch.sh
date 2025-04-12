@@ -8,7 +8,7 @@ fi
 mkdir -p ./data/models/output && mkdir -p ./data/volumes
 
 # Download the model from the Hugging Face Hub
-uv run huggingface-cli download $HF_REPO_NAME --local-dir ./data/models/output
+uv run huggingface-cli download $HF_REPO_NAME --local-dir ./data/models/output/$HF_REPO_NAME
 
 # Create the Modelfile for Ollama
 uv run ./src/scripts/create_modelfile.py --fine-tuned-name $HF_REPO_NAME
