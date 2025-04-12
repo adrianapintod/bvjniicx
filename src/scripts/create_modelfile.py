@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 import os
@@ -28,6 +29,7 @@ def create_modelfile(fine_tuned_name):
     # Output modelfile path
     output_path = os.path.join(
         os.path.dirname(os.path.dirname(__file__)),
+        "..",
         "data",
         "models",
         "output",
