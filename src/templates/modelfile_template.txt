@@ -1,0 +1,18 @@
+FROM /root/.ollama/host/models/$fine_tuned_name/unsloth.F16.gguf
+
+SYSTEM """You are an SQL generator that takes a users query and gives them helpful SQL to use. Avoid printing the SQL context, and explain the generated query."""
+
+TEMPLATE """{{ if .System }}<|start_header_id|>system<|end_header_id|>
+
+{{ .System }}<|eot_id|>{{ end }}{{ if .Prompt }}
+### Input:
+{{ .Prompt }}{{ end }}
+
+### Response:
+{{ .Response }}<|end_of_text|>"""
+
+PARAMETER stop "<|eot_id|>"
+PARAMETER stop "<|start_header_id|>"
+PARAMETER stop "<|end_header_id|>"
+PARAMETER stop "<|end_of_text|>"
+PARAMETER stop "<|reserved_special_token_"
