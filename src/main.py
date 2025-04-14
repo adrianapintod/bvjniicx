@@ -1,3 +1,7 @@
+"""
+This module contains the main.py file, which is used to fine-tune a model.
+"""
+
 import os
 from string import Template
 
@@ -20,7 +24,17 @@ from utils.models import loaded_model, tokenizer
     help="Name of the model to fine-tune",
     type=str,
 )
-def main(output_dir: str, fine_tuned_name: str):
+def main(
+    output_dir: str,
+    fine_tuned_name: str,
+):
+    """
+    Main function to fine-tune a model.
+
+    Args:
+        output_dir (str): The directory to save the fine-tuned model.
+        fine_tuned_name (str): The name of the model to fine-tune.
+    """
     # Load the dataset
     dataset_loader = FineTuneDataset(settings.dataset_name, "train")
     dataset = dataset_loader.load_dataset()

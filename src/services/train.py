@@ -1,3 +1,7 @@
+"""
+This module contains the ModelTrainer class, which is used to train a model.
+"""
+
 from typing import Any
 
 from pydantic import BaseModel, PrivateAttr
@@ -10,6 +14,10 @@ from utils.config import settings
 
 
 class ModelTrainer(BaseModel):
+    """
+    This class is used to train a model.
+    """
+
     __model: PreTrainedModel | None = PrivateAttr(default=None)
     __trainer: SFTTrainer | None = PrivateAttr(default=None)
 
@@ -21,6 +29,19 @@ class ModelTrainer(BaseModel):
         output_dir: str = "./data/models/checkpoints",
         report_to: str = "none",
     ) -> SFTTrainer:
+        """
+        Initialize the trainer.
+
+        Args:
+            model (PreTrainedModel): The model to train.
+            tokenizer (Any): The tokenizer to use.
+            dataset (Any): The dataset to use.
+            output_dir (str): The directory to save the model.
+            report_to (str): The report to use.
+
+        Returns:
+            (SFTTrainer): The trainer.
+        """
         self.__model = FastLanguageModel.get_peft_model(
             model,
             r=settings.lora_rank,
@@ -60,7 +81,19 @@ class ModelTrainer(BaseModel):
         return self.__trainer
 
     def get_model(self) -> PreTrainedModel:
+        """
+        Get the model.
+
+        Returns:
+            The model (PreTrainedModel).
+        """
         return self.__model  # type: ignore
 
     def get_trainer(self) -> SFTTrainer:
+        """
+        Get the trainer.
+
+        Returns:
+            The trainer (SFTTrainer).
+        """
         return self.__trainer  # type: ignore

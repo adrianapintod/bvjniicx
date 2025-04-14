@@ -89,7 +89,7 @@ See `.env.dist` for all available configuration options.
 3. Make your changes
 4. Push to your branch and create a pull request
 
-### How to run OpenWebUI uisng the fine-tuned model
+### How to run OpenWebUI using the fine-tuned model
 
 To run please first install the `huggingface-hub[cli]`
 

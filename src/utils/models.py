@@ -1,4 +1,7 @@
-# Load the model
+"""
+This module contains the models.py file, which is used to load the model and tokenizer.
+"""
+
 from unsloth import FastLanguageModel
 
 from utils.config import settings

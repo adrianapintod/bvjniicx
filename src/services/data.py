@@ -1,4 +1,7 @@
-import os
+"""
+This module contains the FineTuneDataset class, which is used to load a dataset for fine-tuning.
+"""
+
 from string import Template
 
 from datasets import (
@@ -14,6 +17,15 @@ from utils.models import tokenizer
 
 
 class FineTuneDataset(BaseModel):
+    """
+    This class is used to load a dataset for fine-tuning.
+
+    Attributes:
+        name (str): The name of the dataset.
+        split (str): The split of the dataset.
+        __loaded_dataset (DatasetDict | Dataset | IterableDatasetDict | IterableDataset): The loaded dataset.
+    """
+
     name: str
     split: str
     __loaded_dataset: DatasetDict | Dataset | IterableDatasetDict | IterableDataset = (
@@ -29,6 +41,12 @@ class FineTuneDataset(BaseModel):
     def load_dataset(
         self,
     ) -> DatasetDict | Dataset | IterableDatasetDict | IterableDataset:
+        """
+        Load the dataset.
+
+        Returns:
+            (DatasetDict | Dataset | IterableDatasetDict | IterableDataset): The dataset for fine-tuning.
+        """
         self.__loaded_dataset = load_dataset(self.name, split=self.split)
         return self.__loaded_dataset
 
@@ -36,11 +54,16 @@ class FineTuneDataset(BaseModel):
     def format_for_fine_tuning(
         examples: DatasetDict | Dataset | IterableDatasetDict | IterableDataset,
     ) -> dict[str, list[str]]:
-        with open(
-            os.path.join(os.path.dirname(__file__), "../templates/alpaca_template.txt"),
-            "r",
-        ) as f:
-            alpaca_template = Template(f.read())
+        """
+        Format the dataset for fine-tuning.
+
+        Args:
+            examples (DatasetDict | Dataset | IterableDatasetDict | IterableDataset): The dataset to format.
+
+        Returns:
+            (dict[str, list[str]]): The formatted dataset for fine-tuning.
+        """
+        alpaca_template = Template(f.read())
         sql_contexts = examples["sql_context"]  # type: ignore
         sql_prompts = examples["sql_prompt"]  # type: ignore
         sqls = examples["sql"]  # type: ignore
