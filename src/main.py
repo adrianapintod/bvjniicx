@@ -1,5 +1,5 @@
 """
-This module contains the main.py file, which is used to fine-tune a model.
+This module contains the main routine, which is used to fine-tune a model.
 """
 
 import os

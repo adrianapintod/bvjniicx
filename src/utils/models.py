@@ -1,5 +1,5 @@
 """
-This module contains the models.py file, which is used to load the model and tokenizer.
+This module contains the `loaded_model` and `tokenizer` variables, which are used to load the model and tokenizer.
 """
 
 from unsloth import FastLanguageModel
